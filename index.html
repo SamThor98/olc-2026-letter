@@ -259,9 +259,22 @@
         td .sub { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; font-weight: 400; }
         a.schedule { font-family: Fraunces, Georgia, serif; font-size: 26px; letter-spacing: -0.03em; text-underline-offset: 4px; }
 
+        .mkt { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 18px 0 8px; }
+        .mkt-plot { position: relative; height: 220px; }
+        .mkt-zero { position: absolute; left: 0; right: 0; bottom: 40px; height: 1px; background: var(--ink); }
+        .mkt-bar { position: absolute; width: 16px; bottom: 40px; }
+        .mkt-bar.down { bottom: auto; }
+        .b-spy { background: var(--forest); }
+        .b-qqq { background: #3E6B58; }
+        .b-ndx { background: var(--gold); }
+        .b-rut { background: #5C584F; }
+        .mkt-cap { margin-top: 8px; }
+        .mkt-cap strong { display: block; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 20px; letter-spacing: -0.02em; }
+        .mkt-cap span { font-size: 13px; }
+
         @media (max-width: 800px) {
             .wrap { padding: 0 18px; }
-            .hero-grid, .split, .two-note { grid-template-columns: 1fr; }
+            .hero-grid, .split, .two-note, .mkt { grid-template-columns: 1fr; }
             .qrow { grid-template-columns: 1fr auto; }
             .qname { grid-column: 1 / -1; }
             .qhead { align-items: flex-start; flex-direction: column; gap: 2px; }
@@ -293,6 +306,7 @@
             <div class="top-links">
                 <a href="#result">Result</a>
                 <a href="#returns">Percentage</a>
+                <a href="#markets">Markets</a>
                 <a href="#decisions">Decisions</a>
                 <a href="#values">Values</a>
                 <a href="#ledger">Ledger</a>
@@ -518,6 +532,63 @@
 
                 <p class="proof num">$2,307.93 + $3,229.11 + $6,255.83 − $834.26 + $10,027.56 = $20,986.17</p>
                 <p class="muted">The four quarters sum to $10,958.61. That is the figure this review already shows with Definium removed.</p>
+
+                <h3 style="margin-top:36px;" id="markets">Against the market</h3>
+                <p>YTD is December 31, 2025 through November 20, 2026. One year is November 20, 2025 through November 20, 2026. Total is February 7, 2025, the last close before the first investment on February 10, through November 20, 2026. SPY and QQQ are the funds, with dividends reinvested. Nasdaq is the Composite total return. Russell is the Russell 2000 total return.</p>
+                <figure class="mkt">
+                    <div>
+                        <div class="mkt-plot" aria-hidden="true">
+                            <i class="mkt-zero"></i>
+                            <i class="mkt-bar b-spy" style="height:19.5px; left:14%"></i>
+                            <i class="mkt-bar b-qqq down" style="height:6.2px; left:34%; bottom:33.8px"></i>
+                            <i class="mkt-bar b-ndx down" style="height:21.8px; left:54%; bottom:18.2px"></i>
+                            <i class="mkt-bar b-rut" style="height:51.1px; left:74%"></i>
+                        </div>
+                        <div class="mkt-cap"><strong>YTD</strong><span class="muted">Dec 31, 2025 – Nov 20, 2026</span></div>
+                    </div>
+                    <div>
+                        <div class="mkt-plot" aria-hidden="true">
+                            <i class="mkt-zero"></i>
+                            <i class="mkt-bar b-spy" style="height:68.5px; left:14%"></i>
+                            <i class="mkt-bar b-qqq" style="height:43.8px; left:34%"></i>
+                            <i class="mkt-bar b-ndx" style="height:30.5px; left:54%"></i>
+                            <i class="mkt-bar b-rut" style="height:133.9px; left:74%"></i>
+                        </div>
+                        <div class="mkt-cap"><strong>1 year</strong><span class="muted">Nov 20, 2025 – Nov 20, 2026</span></div>
+                    </div>
+                    <div>
+                        <div class="mkt-plot" aria-hidden="true">
+                            <i class="mkt-zero"></i>
+                            <i class="mkt-bar b-spy" style="height:170.8px; left:14%"></i>
+                            <i class="mkt-bar b-qqq" style="height:173.4px; left:34%"></i>
+                            <i class="mkt-bar b-ndx" style="height:171.8px; left:54%"></i>
+                            <i class="mkt-bar b-rut" style="height:159.3px; left:74%"></i>
+                        </div>
+                        <div class="mkt-cap"><strong>Total</strong><span class="muted">Feb 7, 2025 – Nov 20, 2026</span></div>
+                    </div>
+                </figure>
+                <div class="legend">
+                    <span><i class="swatch b-spy"></i>SPY</span>
+                    <span><i class="swatch b-qqq"></i>QQQ</span>
+                    <span><i class="swatch b-ndx"></i>Nasdaq Composite</span>
+                    <span><i class="swatch b-rut"></i>Russell 2000</span>
+                </div>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>Series</th><th class="r">YTD</th><th class="r">1 year</th><th class="r">Total</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SPY</td><td class="r num">+1.95%</td><td class="r num">+6.85%</td><td class="r num">+17.08%</td></tr>
+                        <tr><td>QQQ</td><td class="r num loss-text">−0.62%</td><td class="r num">+4.38%</td><td class="r num">+17.34%</td></tr>
+                        <tr><td>Nasdaq Composite</td><td class="r num loss-text">−2.18%</td><td class="r num">+3.05%</td><td class="r num">+17.18%</td></tr>
+                        <tr><td>Russell 2000</td><td class="r num">+5.11%</td><td class="r num">+13.39%</td><td class="r num">+15.93%</td></tr>
+                        <tr><td>Partnership<span class="sub">Not a net-asset-value return in this review.</span></td><td class="r muted">—</td><td class="r muted">—</td><td class="r muted">—</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <p class="muted" style="margin-top:10px;">The bars use one scale, from −4% to +18%. Each return is the ending level divided by the starting level, minus one, rounded half up to the nearest hundredth. SPY and QQQ use the adjusted close. Nasdaq uses the Composite total-return index. Russell uses the Russell 2000 total-return index. Levels, in that order: SPY 589.1950, 645.5652, 676.6350, 689.8100. QQQ 518.5154, 582.9310, 612.2249, 608.4500. Nasdaq 23,859.7402, 27,130.0000, 28,581.0996, 27,958.0898. Russell 12,335.2598, 12,611.6104, 13,604.5898, 14,299.9502. The dates are February 7, 2025, November 20, 2025, December 31, 2025, and November 20, 2026. Source: Yahoo Finance.</p>
+                <p class="muted">The partnership row is blank on purpose. This review states the gain on closed trades, not the change in net asset value. The 2025 letter stated 28.3% from the first investment through December 31, 2025. That is not the year to date, the past year, or the total through November 20, 2026.</p>
 
                 <h3 style="margin-top:36px;">The tie-out</h3>
                 <p>A recomputed percentage is the gain divided by the cost, rounded half up to the nearest hundredth. Extended means the share count times the price printed in the trade note. Derived means cost plus the gain. Printed means the percentage is the one in the trade note, and the lots are not itemized here, so it is not recomputed.</p>
