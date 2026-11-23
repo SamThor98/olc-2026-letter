@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>2026 Investment Review — Old Logan Capital</title>
-    <meta name="description" content="Old Logan Capital partnership investment review through November 20, 2026. Closed trades, decisions, and how we trade.">
+    <meta name="description" content="Old Logan Capital partnership investment review through November 20, 2026. Closed trades and the decisions beside them.">
     <meta name="theme-color" content="#F5F1E8">
     <link rel="icon" type="image/png" sizes="32x32" href="https://oldlogancapital.com/assets/icons/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://oldlogancapital.com/assets/icons/apple-touch-icon.png">
@@ -82,6 +82,7 @@
         header.hero .wrap { padding-top: 64px; padding-bottom: 56px; }
         header.hero .kicker { color: #D7C48A; }
         header.hero .lede { max-width: 68ch; font-size: 18.5px; color: #E6E2D6; }
+        header.hero a { text-decoration: underline; text-underline-offset: 3px; }
         .hero-grid {
             display: grid;
             grid-template-columns: 1.4fr 0.8fr;
@@ -185,9 +186,9 @@
             margin: 0 0 10px;
         }
 
-        article.decision { padding-top: 8px; }
-        article.decision .kicker { color: var(--gold); margin-bottom: 8px; }
-        article.decision p:last-child { margin-bottom: 0; }
+        .letter { max-width: 78ch; }
+        .letter h3 { margin-top: 34px; }
+        .letter .kicker { color: var(--gold); display: block; margin: 0 0 12px; }
 
         .table-scroll { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px; }
@@ -229,15 +230,41 @@
         body:has(#f-wrote:checked) #ledger .ep:not(.wrote) { display: none; }
 
         .two-note { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-        .note { background: var(--paper); border-top: 3px solid var(--forest); padding: 18px 18px 6px; }
+        .note { background: var(--paper); border-top: 3px solid var(--forest); padding: 22px 22px 10px; }
         .note.warn { border-top-color: var(--gold); }
-        ol.rules { margin: 8px 0 0; padding-left: 1.2em; }
-        ol.rules li { margin-bottom: 10px; }
+        .note p:last-child { margin-bottom: 8px; }
         footer.colophon { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--ink); font-size: 13.5px; color: var(--muted); }
+
+        .qchart { margin: 22px 0 8px; }
+        .qrow { display: grid; grid-template-columns: 210px 1fr 88px; gap: 10px; align-items: center; }
+        .qgroup { padding: 14px 0 6px; border-top: 1px solid var(--line); }
+        .qhead { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 8px; }
+        .qdollars { font-size: 20px; }
+        .qrow { margin: 5px 0; }
+        .qname { font-size: 15px; }
+        .qtrack { position: relative; height: 18px; }
+        .qtrack::before { content: ""; position: absolute; left: 18%; top: -4px; bottom: -4px; width: 1px; background: var(--ink); }
+        .qbar { position: absolute; top: 0; height: 18px; display: block; }
+        .qbar.gain { left: 18%; background: var(--forest); }
+        .qbar.loss { right: 82%; background: var(--loss); }
+        .qbar.printed { background: repeating-linear-gradient(-45deg, var(--loss), var(--loss) 3px, #C4A09A 3px, #C4A09A 5px); }
+        .qpct { text-align: right; font-size: 14px; }
+        .qmath { margin: 2px 0 0; font-size: 13px; }
+        .proof { font-size: 15px; margin-top: 4px; }
+        .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 12px 0 4px; font-size: 14px; color: var(--muted); }
+        .swatch { display: inline-block; width: 22px; height: 12px; margin-right: 6px; vertical-align: -1px; }
+        .swatch.gain { background: var(--forest); }
+        .swatch.loss { background: var(--loss); }
+        .swatch.printed { background: repeating-linear-gradient(-45deg, var(--loss), var(--loss) 3px, #C4A09A 3px, #C4A09A 5px); }
+        td .sub { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; font-weight: 400; }
+        a.schedule { font-family: Fraunces, Georgia, serif; font-size: 26px; letter-spacing: -0.03em; text-underline-offset: 4px; }
 
         @media (max-width: 800px) {
             .wrap { padding: 0 18px; }
             .hero-grid, .split, .two-note { grid-template-columns: 1fr; }
+            .qrow { grid-template-columns: 1fr auto; }
+            .qname { grid-column: 1 / -1; }
+            .qhead { align-items: flex-start; flex-direction: column; gap: 2px; }
             .bar-row { grid-template-columns: 1fr; gap: 4px; }
             .bar-row .val { text-align: left; }
             nav.top .wrap { flex-wrap: wrap; min-height: 0; padding-top: 12px; padding-bottom: 10px; }
@@ -252,7 +279,7 @@
             #sc-dftx, #sc-atex, #sc-both { display: none !important; }
             .ep { display: block !important; opacity: 1 !important; }
             .inside { display: block !important; }
-            details.ep, .note, tr { break-inside: avoid; }
+            details.ep, .note, tr, .qgroup { break-inside: avoid; }
             a { text-decoration: none; }
             header.hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
@@ -265,10 +292,10 @@
             <a class="brand" href="https://oldlogancapital.com/">Old Logan Capital<small>Partnership account</small></a>
             <div class="top-links">
                 <a href="#result">Result</a>
+                <a href="#returns">Percentage</a>
                 <a href="#decisions">Decisions</a>
                 <a href="#values">Values</a>
                 <a href="#ledger">Ledger</a>
-                <a href="#scope">How we trade</a>
             </div>
         </div>
     </nav>
@@ -277,12 +304,12 @@
         <div class="wrap">
             <div class="kicker">2026 investment review · Through November 20</div>
             <h1>Closed trades through November 20.</h1>
-            <p class="lede">Fifteen closed trades in the partnership account. The gain from purchase through sale is $20,893.78. Definium and Anterix are most of it. The other thirteen made money as well.</p>
+            <p class="lede">Fourteen closed trades in the partnership account. The gain from purchase through sale is $20,986.17. Definium and Anterix are most of it. The other twelve made money as well.</p>
             <div class="hero-grid">
                 <div class="result-block">
                     <div class="kicker">Closed trades · Partnership account</div>
-                    <div class="amount">$20,893.78</div>
-                    <p>Purchase through exit, including dividends and recorded trading fees. Three of the positions were carried into the year. This is the gain on closed trades in the partnership account. It is not an investor’s percentage return.</p>
+                    <div class="amount">$20,986.17</div>
+                    <p>Purchase through exit, including dividends and recorded trading fees. Three of the positions were carried into the year. This is the gain on closed trades in the partnership account. It is not an investor’s percentage return. <a href="#returns">The percentage on each trade’s own cost</a> is marked by the quarter the sale closed.</p>
                 </div>
                 <div class="status-card">
                     <strong>Partnership account.</strong>
@@ -295,14 +322,14 @@
     <main>
         <section id="result">
             <div class="wrap">
-                <h2>Where the $20,893.78 came from</h2>
-                <p>Definium Therapeutics was the largest contributor, at $10,027.56. Anterix was second, at $6,635.63. Together they are $16,663.19, about 80 percent of the gain. The other thirteen episodes earned $4,230.59. The rest of the book made money. Definium and Anterix made most of it.</p>
-                <p>Trades opened and closed in 2026 earned $4,920.55. Definium, the June Planet Labs sale, and Nebius were carried in from 2025 and sold this year for another $15,973.23. Both belong in the result.</p>
+                <h2>Where the $20,986.17 came from</h2>
+                <p>Definium Therapeutics was the largest contributor, at $10,027.56. Anterix was second, at $6,635.63. Together they are $16,663.19, about 79 percent of the gain. The other twelve episodes earned $4,322.98. The rest of the book made money. Definium and Anterix made most of it.</p>
+                <p>Trades opened and closed in 2026 earned $5,012.94. Definium, the June Planet Labs sale, and Nebius were carried in from 2025 and sold this year for another $15,973.23. Both belong in the result.</p>
 
                 <fieldset>
                     <legend>Remove a contributor</legend>
                     <div class="choices">
-                        <label><input id="cut-all" type="radio" name="cut" checked>All 15 matched trades</label>
+                        <label><input id="cut-all" type="radio" name="cut" checked>All 14 matched trades</label>
                         <label><input id="cut-dftx" type="radio" name="cut">Without Definium</label>
                         <label><input id="cut-atex" type="radio" name="cut">Without Anterix</label>
                         <label><input id="cut-both" type="radio" name="cut">Without both</label>
@@ -310,20 +337,20 @@
                 </fieldset>
 
                 <div class="scenario" id="sc-all">
-                    <div class="big">$20,893.78</div>
-                    <p>Fifteen matched trades. Definium and Anterix account for $16,663.19. The other thirteen netted $4,230.59.</p>
+                    <div class="big">$20,986.17</div>
+                    <p>Fourteen matched trades. Definium and Anterix account for $16,663.19. The other twelve netted $4,322.98.</p>
                 </div>
                 <div class="scenario" id="sc-dftx">
-                    <div class="big">$10,866.22</div>
-                    <p>Fourteen matched trades without Definium. The result does not depend on that one position. It does depend on it for about half the net.</p>
+                    <div class="big">$10,958.61</div>
+                    <p>Thirteen matched trades without Definium. The result does not depend on that one position. It does depend on it for about half the net.</p>
                 </div>
                 <div class="scenario" id="sc-atex">
-                    <div class="big">$14,258.15</div>
-                    <p>Fourteen matched trades without Anterix. The book still made money.</p>
+                    <div class="big">$14,350.54</div>
+                    <p>Thirteen matched trades without Anterix. The book still made money.</p>
                 </div>
                 <div class="scenario" id="sc-both">
-                    <div class="big">$4,230.59</div>
-                    <p>Thirteen matched trades without Definium and Anterix. Profitable, and no longer the story of the year.</p>
+                    <div class="big">$4,322.98</div>
+                    <p>Twelve matched trades without Definium and Anterix. Profitable, and no longer the story of the year.</p>
                 </div>
 
                 <div class="bars" aria-label="Realized gain or loss by position. Bar length is scaled to Definium at $10,027.56.">
@@ -331,15 +358,16 @@
                     <div class="bar-row row-atex"><div class="name">Anterix (ATEX)</div><div class="track"><div class="fill" style="width:66.17%"></div></div><div class="val num">$6,635.63</div></div>
                     <div class="bar-row"><div class="name">Planet Labs, June</div><div class="track"><div class="fill" style="width:36.28%"></div></div><div class="val num">$3,637.74</div></div>
                     <div class="bar-row"><div class="name">Nebius (NBIS)</div><div class="track"><div class="fill" style="width:23.02%"></div></div><div class="val num">$2,307.93</div></div>
-                    <div class="bar-row"><div class="name">Five other episodes</div><div class="track"><div class="fill" style="width:13.12%"></div></div><div class="val num">$1,315.32</div></div>
+                    <div class="bar-row"><div class="name">Covered calls</div><div class="track"><div class="fill" style="width:12.65%"></div></div><div class="val num">$1,267.99</div></div>
                     <div class="bar-row"><div class="name">Intel (INTC)</div><div class="track"><div class="fill" style="width:8.27%"></div></div><div class="val num">$829.32</div></div>
+                    <div class="bar-row"><div class="name">Archrock (AROC)</div><div class="track"><div class="fill" style="width:1.39%"></div></div><div class="val num">$139.72</div></div>
                     <div class="bar-row"><div class="name">Palantir (PLTR)</div><div class="track"><div class="fill loss" style="width:3.09%"></div></div><div class="val num loss-text">−$309.88</div></div>
                     <div class="bar-row"><div class="name">Amtech (ASYS)</div><div class="track"><div class="fill loss" style="width:5.47%"></div></div><div class="val num loss-text">−$548.35</div></div>
                     <div class="bar-row"><div class="name">Planet Labs, July</div><div class="track"><div class="fill loss" style="width:7.66%"></div></div><div class="val num loss-text">−$767.63</div></div>
                     <div class="bar-row"><div class="name">Regal Rexnord (RRX)</div><div class="track"><div class="fill loss" style="width:8.78%"></div></div><div class="val num loss-text">−$880.16</div></div>
                     <div class="bar-row"><div class="name">Oscar Health (OSCR)</div><div class="track"><div class="fill loss" style="width:13.5%"></div></div><div class="val num loss-text">−$1,353.70</div></div>
                 </div>
-                <p class="muted" style="margin-top:14px;font-size:14px;">Bars use one scale. The longest bar is Definium. A loss can be a well-handled trade. Partnership account, through November 20, 2026. The individual account is excluded. The five-episode line is one net.</p>
+                <p class="muted" style="margin-top:14px;font-size:14px;">Bars use one scale. The longest bar is Definium. A loss can be a well-handled trade. Partnership account, through November 20, 2026. The individual account is excluded. The covered-call line is one net.</p>
 
                 <h3 style="margin-top:36px;">Positions carried into the year</h3>
                 <p>Each of these was bought before 2026, or its cost included earlier lots, and sold in 2026. Planet Labs and Definium also had purchases in 2026. The cost below is the basis of the shares sold.</p>
@@ -380,41 +408,265 @@
                     </tbody>
                 </table>
                 </div>
-                <p class="muted" style="margin-top:10px;font-size:14px;">$4,920.55 + $15,973.23 = $20,893.78. The July Planet Labs trade is not in this table. It was opened and closed in July and is scored on its own.</p>
+                <p class="muted" style="margin-top:10px;font-size:14px;">$5,012.94 + $15,973.23 = $20,986.17. The July Planet Labs trade is not in this table. It was opened and closed in July and is scored on its own.</p>
+            </div>
+        </section>
+
+        <section id="returns">
+            <div class="wrap rule">
+                <h2>The percentage on each trade</h2>
+                <p>A percentage is the gain on that trade divided by what the trade cost. The bars are marked by the quarter the sale closed. The percentages do not add. The dollars under each quarter do. The four quarters, plus Definium, add to $20,986.17.</p>
+                <p>This is not a return on the account. The review does not state the capital those gains were earned on. Nebius, the June Planet Labs sale, and Definium were bought earlier, so their gain includes movement from before 2026. It is marked in the quarter we sold. The fourth quarter runs through November 20. Riskified is still held and is not in these figures.</p>
+
+                <figure class="qchart">
+                    <div class="qgroup">
+                        <div class="qhead">
+                            <span class="kicker">Q1 · January 1–March 31</span>
+                            <span class="qdollars num">+$2,307.93</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Nebius</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar gain" style="width:9.27%"></i></span>
+                            <span class="qpct num">+20.35%</span>
+                        </div>
+                    </div>
+
+                    <div class="qgroup">
+                        <div class="qhead">
+                            <span class="kicker">Q2 · April 1–June 30</span>
+                            <span class="qdollars num">+$3,229.11</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Planet Labs, June sale</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar gain" style="width:27.40%"></i></span>
+                            <span class="qpct num">+60.15%</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Amtech Systems</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar loss" style="width:10.59%"></i></span>
+                            <span class="qpct num loss-text">−23.25%</span>
+                        </div>
+                        <p class="qmath muted num">$3,637.74 + $139.72 − $548.35 = $3,229.11. Archrock’s $139.72 is in the quarter. Its cost is not stated, so it has no bar.</p>
+                    </div>
+
+                    <div class="qgroup">
+                        <div class="qhead">
+                            <span class="kicker">Q3 · July 1–September 30</span>
+                            <span class="qdollars num">+$6,255.83</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Planet Labs, July re-entry</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar loss" style="width:14.18%"></i></span>
+                            <span class="qpct num loss-text">−31.12%</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Regal Rexnord</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar loss" style="width:8.50%"></i></span>
+                            <span class="qpct num loss-text">−18.65%</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Anterix</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar gain" style="width:43.26%"></i></span>
+                            <span class="qpct num">+94.95%</span>
+                        </div>
+                        <p class="qmath muted num">$6,635.63 + $1,267.99 − $767.63 − $880.16 = $6,255.83. The covered calls, $1,267.99, are in the quarter. They expired, so there is no purchase cost to divide by.</p>
+                    </div>
+
+                    <div class="qgroup">
+                        <div class="qhead">
+                            <span class="kicker">Crosses September 30 · August 24–October 13</span>
+                            <span class="qdollars num">+$10,027.56</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Definium Therapeutics</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar gain" style="width:79.06%"></i></span>
+                            <span class="qpct num">+173.54%</span>
+                        </div>
+                        <p class="qmath muted">Sold from August 24 through October 13, so the gain is not placed in one quarter. This bar is the stock. The calls are in the third quarter.</p>
+                    </div>
+
+                    <div class="qgroup">
+                        <div class="qhead">
+                            <span class="kicker">Q4 · October 1–November 20</span>
+                            <span class="qdollars num loss-text">−$834.26</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Intel</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar gain" style="width:4.08%"></i></span>
+                            <span class="qpct num">+8.95%</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Palantir</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar loss printed" style="width:1.53%"></i></span>
+                            <span class="qpct num loss-text">−3.36%</span>
+                        </div>
+                        <div class="qrow">
+                            <span class="qname">Oscar Health</span>
+                            <span class="qtrack" aria-hidden="true"><i class="qbar loss printed" style="width:6.31%"></i></span>
+                            <span class="qpct num loss-text">−13.85%</span>
+                        </div>
+                        <p class="qmath muted num">$829.32 − $309.88 − $1,353.70 = −$834.26. Palantir and Oscar use the percentage printed in the trade note.</p>
+                    </div>
+                    <figcaption class="muted">Bar length is the percentage of cost, on one scale. The longest bar is Definium. A loss can be a well-handled trade. Partnership account, through November 20, 2026.</figcaption>
+                </figure>
+
+                <div class="legend">
+                    <span><i class="swatch gain"></i>Recomputed on this page</span>
+                    <span><i class="swatch loss"></i>Recomputed loss</span>
+                    <span><i class="swatch printed"></i>Printed in the trade note</span>
+                </div>
+
+                <p class="proof num">$2,307.93 + $3,229.11 + $6,255.83 − $834.26 + $10,027.56 = $20,986.17</p>
+                <p class="muted">The four quarters sum to $10,958.61. That is the figure this review already shows with Definium removed.</p>
+
+                <h3 style="margin-top:36px;">The tie-out</h3>
+                <p>A recomputed percentage is the gain divided by the cost, rounded half up to the nearest hundredth. Extended means the share count times the price printed in the trade note. Derived means cost plus the gain. Printed means the percentage is the one in the trade note, and the lots are not itemized here, so it is not recomputed.</p>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Trade</th>
+                            <th>Quarter</th>
+                            <th class="r">Cost</th>
+                            <th class="r">Proceeds</th>
+                            <th class="r">Gain</th>
+                            <th class="r">Percent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nebius<span class="sub">Sold January 6 and February 5. Both dates are in the first quarter.</span></td>
+                            <td>Q1</td>
+                            <td class="r num">$11,339.90</td>
+                            <td class="r num">$13,647.83</td>
+                            <td class="r num">$2,307.93</td>
+                            <td class="r num">+20.35%</td>
+                        </tr>
+                        <tr>
+                            <td>Archrock<span class="sub">Sold May 29. The $139.72 includes dividends. The review does not date the dividends, so the whole net is marked on the sale. Cost is not stated.</span></td>
+                            <td>Q2</td>
+                            <td class="r muted">—</td>
+                            <td class="r muted">—</td>
+                            <td class="r num">$139.72</td>
+                            <td class="r muted">—</td>
+                        </tr>
+                        <tr>
+                            <td>Planet Labs, June sale<span class="sub">351 shares sold June 16. Separate from the July re-entry.</span></td>
+                            <td>Q2</td>
+                            <td class="r num">$6,048.08</td>
+                            <td class="r num">$9,685.82</td>
+                            <td class="r num">$3,637.74</td>
+                            <td class="r num">+60.15%</td>
+                        </tr>
+                        <tr>
+                            <td>Amtech Systems<span class="sub">Bought June 15 for $2,358.63. Sold June 29–30. Proceeds are derived.</span></td>
+                            <td>Q2</td>
+                            <td class="r num">$2,358.63</td>
+                            <td class="r num">$1,810.28<span class="sub">Derived</span></td>
+                            <td class="r num loss-text">−$548.35</td>
+                            <td class="r num loss-text">−23.25%</td>
+                        </tr>
+                        <tr>
+                            <td>Planet Labs, July re-entry<span class="sub">80 shares at $30.83 on July 6. Sold July 17.</span></td>
+                            <td>Q3</td>
+                            <td class="r num">$2,466.40</td>
+                            <td class="r num">$1,698.77</td>
+                            <td class="r num loss-text">−$767.63</td>
+                            <td class="r num loss-text">−31.12%</td>
+                        </tr>
+                        <tr>
+                            <td>Regal Rexnord<span class="sub">22 × $214.52 = $4,719.44 and 22 × $174.52 = $3,839.44. The price difference is $880.00. The reported loss is $0.16 larger. The review describes the purchase as about $4,719.</span></td>
+                            <td>Q3</td>
+                            <td class="r num">$4,719.44<span class="sub">Extended</span></td>
+                            <td class="r num">$3,839.44<span class="sub">Extended</span></td>
+                            <td class="r num loss-text">−$880.16</td>
+                            <td class="r num loss-text">−18.65%</td>
+                        </tr>
+                        <tr>
+                            <td>Covered calls<span class="sub">July 17, August 21, and September 18, each expired. $349.33 + $619.32 + $299.34 = $1,267.99. Separate from the Definium stock gain.</span></td>
+                            <td>Q3</td>
+                            <td class="r muted">—</td>
+                            <td class="r num">$1,267.99</td>
+                            <td class="r num">$1,267.99</td>
+                            <td class="r muted">—</td>
+                        </tr>
+                        <tr>
+                            <td>Anterix<span class="sub">40 shares in July and 121 shares across three September sales. Every sale is in the third quarter, and the review does not split the gain. On the stated cost of $6,988.20 the ratio is 94.9548%, which is 94.95%. The two purchase amounts, $3,518 and $3,470, sum to $6,988.00. The same gain divided by $6,988.00 is 94.96%.</span></td>
+                            <td>Q3</td>
+                            <td class="r num">$6,988.20</td>
+                            <td class="r num">$13,623.83</td>
+                            <td class="r num">$6,635.63</td>
+                            <td class="r num">+94.95%</td>
+                        </tr>
+                        <tr>
+                            <td>Definium Therapeutics<span class="sub">Stock sold August 24–October 13. Basis includes MindMed lots. The calls are not in this line.</span></td>
+                            <td>Q3–Q4</td>
+                            <td class="r num">$5,778.27</td>
+                            <td class="r num">$15,805.83</td>
+                            <td class="r num">$10,027.56</td>
+                            <td class="r num">+173.54%</td>
+                        </tr>
+                        <tr>
+                            <td>Intel<span class="sub">52 × $90.00 + 44 × $104.32 = $9,270.08. 44 × $113.39 + 52 × $98.28 = $10,099.72. That extension gains $829.64. The reported gain, the one in the $20,986.17, is $0.32 less. 8.95% is $829.32 divided by $9,270.08.</span></td>
+                            <td>Q4</td>
+                            <td class="r num">$9,270.08<span class="sub">Extended</span></td>
+                            <td class="r num">$10,099.72<span class="sub">Extended</span></td>
+                            <td class="r num">$829.32</td>
+                            <td class="r num">+8.95%</td>
+                        </tr>
+                        <tr>
+                            <td>Palantir<span class="sub">Three lots of 14, 14, and 23 shares, sold in two stages in November. Prices are not stated, so the percentage is the one printed in the trade note.</span></td>
+                            <td>Q4</td>
+                            <td class="r muted">—</td>
+                            <td class="r muted">—</td>
+                            <td class="r num loss-text">−$309.88</td>
+                            <td class="r num loss-text">−3.36%<span class="sub">Printed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Oscar Health<span class="sub">324 shares sold at $25.98 on November 19. The adds are priced and not sized, so the cost cannot be recomputed. The percentage is the one printed in the trade note.</span></td>
+                            <td>Q4</td>
+                            <td class="r muted">—</td>
+                            <td class="r muted">—</td>
+                            <td class="r num loss-text">−$1,353.70</td>
+                            <td class="r num loss-text">−13.85%<span class="sub">Printed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Total<span class="sub">Cost and proceeds are not totaled. A line without both is not a capital base.</span></td>
+                            <td></td>
+                            <td class="r muted">—</td>
+                            <td class="r muted">—</td>
+                            <td class="r num">$20,986.17</td>
+                            <td class="r muted">—</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <p class="muted" style="margin-top:10px;">Check on six lines, not a return. Definium, Anterix, Planet Labs in June, Nebius, Planet Labs in July, and Amtech state a single cost. Their gains are $21,292.88 and their costs are $34,979.48. $21,292.88 ÷ $34,979.48 = 60.87%. The other six lines net to a loss of $306.71. $21,292.88 − $306.71 = $20,986.17.</p>
+
+                <p style="margin-top:28px;"><a class="schedule" href="realized-gain.html">Realized gain schedule, PDF</a></p>
+                <p class="muted">The same figures, with every addition written out, for a tax representative to tie to the trade confirmations and Form 1099-B. This file is not a tax return, a Form 1099-B, or a performance composite. The individual account is excluded. <a href="partnership-realized-gain-2026.pdf" download>Download the PDF file</a>.</p>
             </div>
         </section>
 
         <section id="decisions">
             <div class="wrap rule">
-                <div class="split">
-                    <div>
-                        <h2>Two decisions worth keeping in the record</h2>
-                        <p>We would repeat the way we built Anterix. We would not repeat the reason we bought Amtech. The dollars run the other way. A gain is not a clean process, and a loss is not a failure of nerve.</p>
-                    </div>
-                    <blockquote class="pull">
-                        <p>The memory stocks ran without us. We will not buy a smaller company to feel as if we caught that move.</p>
-                        <div class="kicker">What Amtech taught us</div>
-                    </blockquote>
-                </div>
+                <h2>What we would do again</h2>
+                <div class="letter">
+                    <p>The ledger is the full record. Two trades are here because they are the ones we mean to use. Anterix returned $6,635.63, a gain of 94.95 percent, and we would still sell sooner. Amtech lost $548.35, or 23.25 percent, and the sale is the part we would make again. The profit and the loss are evidence. The grade is the decision.</p>
 
-                <div class="split" style="margin-top:36px;">
-                    <article class="decision">
-                        <div class="kicker">Repeat · Anterix · +$6,635.63 · +94.96%</div>
-                        <h3>The second buy had to be earned.</h3>
-                        <p>Anterix owns licenses in the 900 MHz band. We bought it in April because the FCC was opening that band to broader broadband use, and we thought the licenses could support a price about twice what we paid. That was specific enough to be wrong.</p>
-                        <p>We do not buy the whole position on the first day. We bought 83 shares on April 17 for $3,518, and 78 more on April 21 for $3,470, after the price showed strength and broke the levels we were watching. We would take that entry again.</p>
-                        <p>The exit was late. We sold 40 shares in July and the remaining 121 across three sales in September. Net proceeds were $13,623.83 on $6,988.20 of cost. The market had already given us a reason to sell. The trigger to sell has to be as specific as the trigger to add.</p>
-                        <p><a href="#ep-atex">The transactions</a></p>
-                    </article>
-                    <article class="decision">
-                        <div class="kicker">Change · Amtech Systems · −$548.35 · −23.25%</div>
-                        <h3>We bought the packaging theme through the wrong company.</h3>
-                        <p>Micron, Sandisk, SK Hynix, and Samsung ran hard, and a lot of the equipment stocks moved up with them. Those four supply most of the world’s memory, and the price tends to move together. We did not own them.</p>
-                        <p>Investors are comparing this buildout to the railroads. Druckenmiller has used that comparison for years. While the track is going in, the company selling the ties looks as if it can grow forever. When the track is finished, the orders for ties fall off. The same comparison is being made now about data centers, memory, and the equipment that builds them. The comparison is worth keeping. It is a poor reason to buy a small supplier in place of the companies that are getting the orders.</p>
-                        <p>The money flow was real. Capital was moving into advanced packaging, the step that stacks and connects chips. Amtech was talking about business with a hyperscaler, one of the large cloud companies, and it looked like a turnaround those orders could carry. We bought it on June 15 for $2,358.63. We were early, and we were in the wrong stock. Amtech’s growth slowed. The large packaging companies kept taking business from the smaller ones. In much of semiconductor equipment, two or three companies end up owning the market because they keep the orders. We were out by June 30. The loss was $548.35, or 23.25 percent. The sale was the right call. We would not buy the smaller name to catch a move the leaders had already made.</p>
-                        <p>The idea is a 2 out of 5. The sale is a 3.</p>
-                        <p><a href="#ep-asys">Read the Amtech note</a></p>
-                    </article>
+                    <h3>The second buy had to be earned.</h3>
+                    <p class="kicker">Anterix · +$6,635.63 · +94.95%</p>
+                    <p>Anterix owns licenses in the 900 MHz band. We bought it in April because the FCC was opening that band to broader broadband use, and we thought the licenses could support a price about twice what we paid. That was specific enough to be wrong. We can check the target. That is the kind of idea we want on the way in.</p>
+                    <p>We buy in pieces. A full position is about a fifth of the account, and the second purchase has to be earned by the price. On April 17 we bought 83 shares for $3,518. On April 21, after the stock showed strength and broke the levels we were watching, we bought 78 more for $3,470. We would take that entry again. The idea is a 4. The size is a 4.</p>
+                    <p>The exit is the part we would change. The market had already given us a reason to sell. We sold 40 shares in July and the remaining 121 across three sales in September. Net proceeds were $13,623.83 on $6,988.20 of cost. The gain stands. Execution is a 3 because we were slow. The trigger to sell has to be written with the same specificity as the trigger to add. <a href="#ep-atex">The transactions</a></p>
+
+                    <h3>We bought the packaging theme through the wrong company.</h3>
+                    <p class="kicker">Amtech Systems · −$548.35 · −23.25%</p>
+                    <p>Micron, Sandisk, SK Hynix, and Samsung ran hard, and a lot of the equipment stocks moved with them. Those four supply most of the world’s memory, and the price tends to move together. We did not own them. The memory stocks ran without us. That is a fact about the book. Buying a smaller company afterward, so the book feels caught up, is how a missed move turns into a bad trade.</p>
+                    <p>While a buildout is going in, the company that sells the ties can look as if demand will last as long as the track. When the track is finished, the orders for ties fall off. Druckenmiller has used that comparison for years. The same comparison is being made now about data centers, memory, and the equipment that builds them. It is worth keeping. It says to own the companies getting the orders, or to leave the theme alone.</p>
+                    <p>The money was real. Capital was moving into advanced packaging, the step that stacks and connects chips. Amtech was talking about business with a hyperscaler, one of the large cloud companies, and it looked like a turnaround those orders could carry. We bought it on June 15 for $2,358.63. We were early, and we were in the wrong stock. Amtech’s growth slowed. The large packaging companies kept taking business from the smaller ones. In much of semiconductor equipment, two or three companies end up owning the market because they keep the orders. We were out by June 30. The loss was $548.35, or 23.25 percent. The sale is the decision we would repeat. The purchase is the one we would retire. The idea is a 2. The sale is a 3. <a href="#ep-asys">The Amtech note</a></p>
+
+                    <p>Before the next buy we write what we believe, what would prove it wrong, and how much of the account we intend to risk. The grade is that note, read again after the trade is closed.</p>
                 </div>
             </div>
         </section>
@@ -422,25 +674,25 @@
         <section id="values">
             <div class="wrap rule">
                 <h2>What we hold ourselves to</h2>
-                <p>Four standards.</p>
+                <p>Four tests. A trade can pass one and fail another. The grades in the ledger are where that shows up.</p>
                 <div class="two-note">
                     <div class="note">
                         <h3>Transparency</h3>
-                        <p>You are reading the trades, the dollars, and the decision beside them.</p>
+                        <p>The partnership account is on this page in a form a reader can check. Each closed trade carries what we paid, what we received, and the reason we bought and sold. A holding we still own is named and kept out of the total. Riskified is that holding. The $20,986.17 is closed trades only. The individual account is excluded from every figure. A number on this page is a number we can show from the brokerage record.</p>
                     </div>
                     <div class="note">
                         <h3>Integrity</h3>
-                        <p>A gain and a loss are explained the same way. The grade follows the decision.</p>
+                        <p>A gain and a loss are written in the same detail, and the grade stays on the decision. Anterix was the second-largest gain in the account. The exit is a 3, because we sold after the market had already made the case for leaving. Amtech lost 23.25 percent. The sale is a 3, because getting out followed the evidence we had. The result sits beside the grade. The decision sets the grade.</p>
                     </div>
                 </div>
                 <div class="two-note" style="margin-top:28px;">
                     <div class="note">
                         <h3>Convexity</h3>
-                        <p>We want more upside than downside. A fair bet is not the business.</p>
+                        <p>We want the loss, if we are wrong, to be smaller than the gain if we are right, and we want to know beforehand what being wrong looks like. Nebius had a defined downside and a larger upside, which is why we owned it. Anterix was a claim that the licenses could be worth about twice the price we paid. A trade that pays about the same for being right as it costs for being wrong is a trade we pass. We start with part of the position. We add when the price confirms the idea. We stop adding when the market is weakening and each higher purchase is only a way to stay involved. Oscar is the case where we did not stop.</p>
                     </div>
                     <div class="note">
                         <h3>Winning</h3>
-                        <p>Process beats impulse. We would rather follow the price than talk ourselves into staying.</p>
+                        <p>The standard is a decision we would make again, including the decision to leave. Definium’s data still looked good when we sold. The stock was making a top, so we sold the shares and let the price settle the argument. In July, Planet Labs looked as if it had stopped falling. It had not. Eleven days later the levels we watch were broken, and we were out. Following the price is the work. Staying because the original story still sounds right is how a small loss becomes a trade we cannot defend.</p>
                     </div>
                 </div>
             </div>
@@ -449,11 +701,11 @@
         <section id="ledger">
             <div class="wrap rule">
                 <h2>The trades</h2>
-                <p>Closed trades in the partnership account through November 20. Riskified is still a holding, so it is not in the $20,893.78. Where a note has a grade, it is from 1 to 5 and a higher number is better. Thesis is the idea. Sizing is whether the buy fit the risk. Execution is whether we followed the plan.</p>
+                <p>Closed trades in the partnership account through November 20. Riskified is still a holding, so it is not in the $20,986.17. Where a note has a grade, it is from 1 to 5 and a higher number is better. Thesis is the idea. Sizing is whether the buy fit the risk. Execution is whether we followed the plan.</p>
                 <fieldset>
                     <legend>Show</legend>
                     <div class="choices">
-                        <label><input id="f-all" type="radio" name="filter" checked>All 12 lines</label>
+                        <label><input id="f-all" type="radio" name="filter" checked>All 13 lines</label>
                         <label><input id="f-gain" type="radio" name="filter">Gains</label>
                         <label><input id="f-loss" type="radio" name="filter">Losses</label>
                         <label><input id="f-wrote" type="radio" name="filter">Reviewed</label>
@@ -466,13 +718,13 @@
                     <div class="inside">
                         <p class="facts">Stock sold Aug 24–Oct 13, 2026 · 425.15 shares · cost $5,778.27 · proceeds $15,805.83 · basis includes MindMed lots</p>
                         <p>Definium is the company formerly known as MindMed, and the shares we sold include that older position. We were up a great deal. The company’s data still looked good. The stock did not. It was making a top. We sold call options to lock in profit, and then we sold the shares, from August 24 to October 13, because we trusted the price. We would make that sale again.</p>
-                        <p>The $10,027.56 is the stock only. It is the largest gain in this review. The call options are not in it. They are inside the separate $1,315.32.</p>
+                        <p>The $10,027.56 is the stock only. It is the largest gain in this review. The call options are not in it. They are the covered calls, $1,267.99.</p>
                     </div>
                 </details>
                 <details class="ep gain wrote" id="ep-atex">
                     <summary>Anterix <span class="num">+$6,635.63</span></summary>
                     <div class="inside">
-                        <p class="facts">Bought 83 shares April 17 and 78 shares April 21 · cost $6,988.20 · sold 40 in July and 121 across three September trades · proceeds $13,623.83 · +94.96%</p>
+                        <p class="facts">Bought 83 shares April 17 and 78 shares April 21 · cost $6,988.20 · sold 40 in July and 121 across three September trades · proceeds $13,623.83 · +94.95%</p>
                         <p>Anterix owns licenses in the 900 MHz band. We bought it because the FCC was opening that band to broader broadband use, which would make the licenses more valuable. We thought those licenses could support a price about twice what we paid. That was a specific idea. It could have been wrong.</p>
                         <p>We do not buy the whole position on the first day. We bought 83 shares on April 17 for $3,518, and 78 more on April 21 for $3,470, after the stock showed strength and broke the levels we were watching. We would buy it that way again.</p>
                         <p>We were slow to sell. The market had already given us a reason. We sold 40 shares in July and the other 121 in three sales in September. We would sell sooner. The entry is a 4. The size is a 4. The exit is why execution is a 3.</p>
@@ -494,11 +746,11 @@
                         <p>After we were out, we stopped watching. The stock bounced and went on to new highs. The same risk and the same upside were still there. Selling a stock and forgetting the stock are two different decisions. We would keep the name on the list.</p>
                     </div>
                 </details>
-                <details class="ep gain" id="ep-other">
-                    <summary>Five other matched episodes <span class="num">+$1,315.32</span></summary>
+                <details class="ep gain" id="ep-calls">
+                    <summary>Covered calls <span class="num">+$1,267.99</span></summary>
                     <div class="inside">
-                        <p class="facts">Net of five episodes · included in the $20,893.78</p>
-                        <p>Five smaller episodes add up to $1,315.32. The figure is one net, not five separate stock wins. It includes the Definium call options we sold as the stock was topping, and a Tesla call option with a January 2027 expiration and a $400 strike. That option money is not part of the $10,027.56 Definium stock gain above.</p>
+                        <p class="facts">Three Definium calls · July 17 $45, August 21 $45, September 18 $45 · each expired · included in the $20,986.17</p>
+                        <p>We sold these calls against Definium as the stock was topping. The July call brought in $349.33, the August call $619.32, and the September call $299.34. The $1,267.99 is that premium. It is separate from the $10,027.56 stock gain above.</p>
                     </div>
                 </details>
                 <details class="ep gain wrote" id="ep-intc">
@@ -507,6 +759,13 @@
                         <p class="facts">52 shares at $90.00, then 44 at $104.32 · sold 44 at $113.39 on October 6 and 52 at $98.28 on October 14 · +8.95%</p>
                         <p>This was a trade in the stock, not a new long-term view of Intel. The shares had sold off hard. We did not think the drop reflected a change in the business, and the bounce looked to have more upside than downside.</p>
                         <p>We bought 52 shares at $90, then 44 shares at $104.32. The second purchase was about the same dollars as the first. It was higher because the bounce was working, which is when we add. We sold the 44 shares at $113.39 on October 6 and the original 52 at $98.28 on October 14. Both sales were above what we paid. The gain was $829.32, or 8.95 percent. We would take the trade again. Thesis 4. Sizing 4. Execution 4.</p>
+                    </div>
+                </details>
+                <details class="ep gain" id="ep-aroc">
+                    <summary>Archrock <span class="num">+$139.72</span></summary>
+                    <div class="inside">
+                        <p class="facts">104 shares on February 9 and 96 shares on April 1 · dividends, including a 1.153-share reinvestment · sold May 29</p>
+                        <p>We bought 104 shares on February 9 and 96 more on April 1. The position paid dividends, and one dividend was reinvested as 1.153 shares. We sold the position on May 29. The gain was $139.72.</p>
                     </div>
                 </details>
                 <details class="ep loss wrote" id="ep-pltr">
@@ -551,25 +810,10 @@
                 <details class="ep open" id="ep-rskd">
                     <summary>Riskified <span class="muted">Still holding</span></summary>
                     <div class="inside">
-                        <p class="facts">Held on November 20 · not in the $20,893.78</p>
-                        <p>We still own Riskified. It had not been sold by November 20, so there is no realized gain or loss to report. The $20,893.78 is closed trades only. This holding is not part of that number, and it is not a loss.</p>
+                        <p class="facts">Held on November 20 · not in the $20,986.17</p>
+                        <p>We still own Riskified. It had not been sold by November 20, so there is no realized gain or loss to report. The $20,986.17 is closed trades only. This holding is not part of that number, and it is not a loss.</p>
                     </div>
                 </details>
-            </div>
-        </section>
-
-        <section id="scope">
-            <div class="wrap rule">
-                <h2>How we trade</h2>
-                <ol class="rules">
-                    <li>A full position is about 20 percent of the account. We buy part of it first and add when the price confirms the idea. Anterix and Intel are the examples. The second buy is a decision.</li>
-                    <li>We will not add just because a stock is making new highs if the broader market is going the other way. Oscar is the example we do not want to copy.</li>
-                    <li>When investors are comparing a buildout to the railroads, we own the companies getting the orders, or we do not own the theme. We do not buy a smaller company because we missed the move in the leaders. Amtech is the example. The run in memory is the move we missed.</li>
-                    <li>Before a new-product or rotation trade we will write who is adopting it now, how fast supply can respond, and when that shows up in the company’s orders.</li>
-                    <li>The exit trigger gets written down with the same specificity as the add. Anterix’s late sale is the reason.</li>
-                    <li>We sell in pieces, to bank profit without giving up the whole position. After we are out, we look again if the original risk and reward are still intact. Nebius is the case where we did the first and skipped the second.</li>
-                    <li>At entry we write what we believe, what would prove it wrong, and how much capital we intend to risk. The result goes next to that note.</li>
-                </ol>
 
                 <footer class="colophon">
                     <p>Old Logan Capital · Partnership account · Through November 20, 2026. Figures are unaudited and were prepared from brokerage activity. This is the gain on closed trades. It is not a net asset value, a performance composite, or an offer to sell an interest. The individual account is excluded.</p>
